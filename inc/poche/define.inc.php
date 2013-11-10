@@ -18,7 +18,7 @@ define ('STORAGE_PASSWORD', ''); # leave blank for sqlite
 define ('MODE_DEMO', FALSE);
 define ('DEBUG_POCHE', FALSE);
 define ('DOWNLOAD_PICTURES', FALSE);
-define ('SHARE_TWITTER', TRUE);
+define ('SHARE_TWITTER', FALSE);
 define ('SHARE_MAIL', TRUE);
 define ('SHARE_SHAARLI', FALSE);
 define ('SHAARLI_URL', 'http://myshaarliurl.com');
