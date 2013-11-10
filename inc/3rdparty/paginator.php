@@ -125,6 +125,7 @@ class Paginator{
         $lpm1 = $lastpage - 1;
 
         $pagination = "";
+
         if($lastpage > 1)
         {   
             $pagination .= "<div class='pagination'>";
@@ -193,10 +194,9 @@ class Paginator{
             $pagination.= "<a href='".$path."$this->_instance=$next"."$ext'>next »</a>";
         else
             $pagination.= "<span class='disabled'>next »</span>";
-            $pagination.= "</div>\n";       
+            $pagination.= "&nbsp;($this->_totalRows)</div>\n";
         }
-
-
+	
     return $pagination;
     }
 }
