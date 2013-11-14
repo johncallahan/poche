@@ -130,6 +130,22 @@ class Database {
         return $entries;
     }
 
+    public function retrieveAllItems() {
+        $sql        = "SELECT * FROM entries WHERE is_read = 0 ORDER BY id DESC LIMIT 5";
+        $query      = $this->executeQuery($sql);
+        $entries    = $query->fetchAll();
+
+        return $entries;
+    }
+
+    public function retrieveAllIds() {
+        $sql        = "SELECT id FROM entries WHERE is_read = 0 ORDER BY id DESC LIMIT 5";
+        $query      = $this->executeQuery($sql);
+        $entries    = $query->fetchAll();
+
+        return $entries;
+    }
+
     public function retrieveOneById($id, $user_id) {
         $entry  = NULL;
         $sql    = "SELECT * FROM entries WHERE id=? AND user_id=?";

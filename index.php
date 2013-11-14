@@ -12,6 +12,7 @@ if (file_exists(__DIR__ . '/inc/poche/myconfig.inc.php')) {
     require_once __DIR__ . '/inc/poche/myconfig.inc.php';
 }
 require_once './inc/poche/Tools.class.php';
+require_once './inc/poche/Fever.class.php';
 Tools::createMyConfig();
 
 include dirname(__FILE__).'/inc/poche/config.inc.php';
@@ -42,6 +43,18 @@ elseif (isset($_GET['import'])) {
 }
 elseif (isset($_GET['export'])) {
     $poche->export();
+}
+elseif (isset($_GET['api']) && isset($_GET['groups'])) {
+    $poche->feverGroups();
+}
+elseif (isset($_GET['api']) && isset($_GET['feeds'])) {
+    $poche->feverFeeds();
+}
+elseif (isset($_GET['api']) && isset($_GET['unread_item_ids'])) {
+    $poche->feverUnreadItemIds();
+}
+elseif (isset($_GET['api']) && isset($_POST['api_key'])) {
+    $poche->fever();
 }
 
 # vars to send to templates

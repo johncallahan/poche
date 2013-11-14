@@ -536,6 +536,72 @@ class Poche
         Tools::logm('export view');
     }
 
+    public function fever()
+    {
+        $entries = $this->store->retrieveAllItems();
+        echo $this->tpl->render('fever.twig', array(
+            'fever' => Fever::renderJson(array(
+	    	    'api_version' => 3,
+		    'auth' => 1,
+		    'last_refreshed_on_time' => 1384277813,
+	    	    'items' => Fever::convertEntries($entries),
+		    'total_items' => count($entries)))
+        ));
+        Tools::logm('fever view');
+    }
+
+    public function feverUnreadItemIds()
+    {
+        $entries = $this->store->retrieveAllIds($this->user->getId());
+        echo $this->tpl->render('fever.twig', array(
+            'fever' => Fever::renderJson(array(
+	    	    'api_version' => 3,
+		    'auth' => 1,
+		    'last_refreshed_on_time' => 1384277813,
+	    	    'unread_item_ids' => Fever::unreadItemIds($entries)))
+        ));
+        Tools::logm('fever view');
+    }
+
+    public function feverGroups()
+    {
+        echo $this->tpl->render('fever.twig', array(
+            'fever' => Fever::renderJson(array(
+	    	    'api_version' => 3,
+		    'auth' => 1,
+		    'last_refreshed_on_time' => 1384277813,
+	    	    'groups' => array(array(
+		    	    'id' => 1,
+			    'title' => "All items")),
+		    'feeds_groups' => array(array(
+		            'group_id' => 1,
+			    'feed_ids' => "90"))))
+        ));
+        Tools::logm('fever view');
+    }
+
+    public function feverFeeds()
+    {
+        echo $this->tpl->render('fever.twig', array(
+            'fever' => Fever::renderJson(array(
+	    	    'api_version' => 3,
+		    'auth' => 1,
+		    'last_refreshed_on_time' => 1384277813,
+	    	    'feeds' => array(array(
+		    	    'id' => 90,
+			    'favicon_id' => 0,
+			    'title' => "1024cores",
+			    'url' => "http://feeds.feedburner.com/1024cores",
+			    'site_url' => "http://feeds.feedburner.com/1024cores",
+			    'is_spark' => 0,
+			    'last_updated_on_time' => 1384281334)),
+		    'feeds_groups' => array(array(
+		            'group_id' => 1,
+			    'feed_ids' => "90"))))
+        ));
+        Tools::logm('fever view');
+    }
+
     /**
      * Checks online the latest version of poche and cache it
      * @param  string $which 'prod' or 'dev'
