@@ -131,7 +131,7 @@ class Database {
     }
 
     public function retrieveAllItems() {
-        $sql        = "SELECT * FROM entries WHERE is_read = 0 ORDER BY id DESC LIMIT 5";
+        $sql        = "SELECT * FROM entries WHERE is_read = 0 ORDER BY id DESC LIMIT 20";
         $query      = $this->executeQuery($sql);
         $entries    = $query->fetchAll();
 
@@ -139,7 +139,7 @@ class Database {
     }
 
     public function retrieveAllIds() {
-        $sql        = "SELECT id FROM entries WHERE is_read = 0 ORDER BY id DESC LIMIT 5";
+        $sql        = "SELECT id FROM entries WHERE is_read = 0 ORDER BY id DESC LIMIT 20";
         $query      = $this->executeQuery($sql);
         $entries    = $query->fetchAll();
 
